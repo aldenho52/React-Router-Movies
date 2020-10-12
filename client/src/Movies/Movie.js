@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, NavLink, useRouteMatch, Route } from 'react-router-dom'
 
 import MovieCard from './MovieCard'
+import Stars from './Stars'
 
 export default function Movie(props) {
   const [movie, setMovie] = useState();
@@ -42,20 +43,11 @@ export default function Movie(props) {
   return (
     <div className="save-wrapper">
       <div className="movie-card">
-        <h2>{title}</h2>
-        <div className="movie-director">
-          Director: <em>{director}</em>
-        </div>
-        <div className="movie-metascore">
-          Metascore: <strong>{metascore}</strong>
-        </div>
+      <MovieCard title={title} director={director} metascore={metascore} />
+        <div>
         <h3>Actors</h3>
-
-        {stars.map(star => (
-          <div key={star} className="movie-star">
-            {star}
-          </div>
-        ))}
+          <Stars stars={stars} />
+        </div>
       </div>
       <div className="save-button">Save</div>
     </div>
