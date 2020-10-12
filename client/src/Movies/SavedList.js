@@ -6,7 +6,6 @@ export default function SavedList(props) {
 
   const routeToHome = () => {
     history.push('/movies')
-    console.log(history)
   }
 
   return (

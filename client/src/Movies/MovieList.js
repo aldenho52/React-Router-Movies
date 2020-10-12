@@ -18,7 +18,7 @@ function MovieDetails(props) {
   const {url} = useRouteMatch()
 
   return (
-    <Link to={`${url}/${id}`}>
+    <Link to={`/movies/${id}`}>
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
