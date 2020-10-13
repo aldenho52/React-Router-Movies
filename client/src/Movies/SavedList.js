@@ -2,6 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom'
 
 export default function SavedList(props) {
+  const { list, movies } = props
   const history = useHistory()
 
   const routeToHome = () => {
@@ -11,10 +12,16 @@ export default function SavedList(props) {
   return (
     <div className="saved-list">
       <h3>Saved Movies:</h3>
-      {props.list.map(movie => (
-        <span className="saved-movie">{movie.title}</span>
-      ))}
+      {
+        movies.map(movie => {
+          if (list.includes(movie.id)) {
+            return <span key={movie.id} className="saved-movie">{movie.title}</span>
+          }
+      })
+    }
       <div onClick={routeToHome} className="home-button">Home</div>
     </div>
   );
 }
+
+

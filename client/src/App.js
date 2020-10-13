@@ -28,15 +28,21 @@ export default function App () {
     getMovies();
   }, []);
 
-  const addToSavedList = id => {
-    // This is stretch. Prevent the same movie from being "saved" more than once
-    setSaved(...saved, saved.push(`${id}`))
-    console.log(saved)
-  };
+const addToSavedList = id => {
+      if (!saved.includes(id)) {
+      setSaved([...saved, id])      
+      }  
+    }
+  
+//     // This is stretch. Prevent the same movie from being "saved" more than once
+
+//     useEffect(() => {
+//       addToSavedList()
+//     }, [])
 
   return (
     <div>
-      <SavedList list={[ /* This is stretch */]} />
+      <SavedList list={saved} movies={movieList} />
       <Switch>        
         <Route path='/movies/:movieID'>
           <Movie movies={movieList} addToSavedList={addToSavedList}/>
@@ -44,7 +50,7 @@ export default function App () {
         <Route path='/' >
           <MovieList movies={movieList}/>
         </Route>
-    
+
       </Switch>
     </div>
   );
