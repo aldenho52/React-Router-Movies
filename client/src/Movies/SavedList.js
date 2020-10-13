@@ -1,9 +1,12 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link, useRouteMatch, useParams } from 'react-router-dom'
 
 export default function SavedList(props) {
   const { list, movies } = props
   const history = useHistory()
+  const {url} = useRouteMatch()
+
+  const {movieID} = useParams()
 
   const routeToHome = () => {
     history.push('/')
@@ -15,7 +18,7 @@ export default function SavedList(props) {
       {
         movies.map(movie => {
           if (list.includes(movie.id)) {
-            return <span key={movie.id} className="saved-movie">{movie.title}</span>
+            return <Link to='/movies/:movieID'><span key={movie.id} className="saved-movie">{movie.title}</span></Link>
           }
       })
     }
@@ -25,3 +28,4 @@ export default function SavedList(props) {
 }
 
 
+// http://localhost:3000/movies/0
