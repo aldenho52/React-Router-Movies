@@ -49,7 +49,7 @@ export default function Movie(props) {
           <Stars stars={stars} />
         </div>
       </div>
-      <div onClick={addToSavedList(id)} className="save-button">Save</div>
+      <div onClick={evt => addToSavedList(id)} className="save-button">Save</div>
     </div>
   );
 }
