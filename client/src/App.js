@@ -42,7 +42,7 @@ const addToSavedList = id => {
 
   return (
     <div>
-      <SavedList list={saved} movies={movieList} />
+      <SavedList list={saved} movies={movieList} addToSavedList={addToSavedList} />
       <Switch>        
         <Route path='/movies/:movieID'>
           <Movie movies={movieList} addToSavedList={addToSavedList}/>
